@@ -1,0 +1,7 @@
+{
+  "input": "./example/input",
+  "output": "./example/result.xlsx",
+  "summation": "./example/summationExample.json",
+  "parsePlayernames": true,
+  "includeTranslation": false
+}

@@ -1,0 +1,45 @@
+{
+  "TestSheet": {
+    "Move Total": {
+      "minecraft:custom": [
+        "minecraft:walk_one_cm",
+        "minecraft:fly_one_cm",
+        "minecraft:swim_one_cm",
+        "minecraft:sprint_one_cm",
+        "minecraft:doesnt_exist"
+      ]
+    },
+    "KillDeath": {
+      "minecraft:custom": [
+        "minecraft:player_kills",
+        "minecraft:deaths"
+      ]
+    },
+    "Something else": {
+      "minecraft:custom":[
+        "minecraft:deaths",
+        "minecraft:player_kills"
+      ],
+      "minecraft:dropped": [
+        "minecraft:player_head"
+      ]
+    }
+  },
+  "TestSheet2": {
+    "KillDeath": {
+      "minecraft:custom": [
+        "minecraft:player_kills",
+        "minecraft:deaths"
+      ]
+    },
+    "Move Total": {
+      "minecraft:custom": [
+        "minecraft:walk_one_cm",
+        "minecraft:fly_one_cm",
+        "minecraft:swim_one_cm",
+        "minecraft:sprint_one_cm",
+        "minecraft:doesnt_exist"
+      ]
+    }
+  }
+}

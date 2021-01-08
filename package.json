@@ -1,0 +1,32 @@
+{
+  "name": "mcstatstoexcel",
+  "version": "0.0.1",
+  "description": "converts Minecraft stats into an excel file for further usage",
+  "main": "src/main.js",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "test": "node src/main.js",
+    "help": "node src/main.js --help"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Plagiatus/MCStatsToExcel.git"
+  },
+  "author": "Plagiatus",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Plagiatus/MCStatsToExcel/issues"
+  },
+  "homepage": "https://github.com/Plagiatus/MCStatsToExcel#readme",
+  "dependencies": {
+    "exceljs": "^4.2.0",
+    "node-fetch": "^2.6.1",
+    "prompt": "^1.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^14.14.20",
+    "pkg": "^4.4.9"
+  }
+}

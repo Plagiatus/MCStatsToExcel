@@ -1,0 +1,31 @@
+{
+  "stats": {
+    "minecraft:picked_up": {
+      "minecraft:golden_apple": 1,
+      "minecraft:player_head": 77,
+      "minecraft:oak_sign": 2
+    },
+    "minecraft:custom": {
+      "minecraft:jump": 9,
+      "minecraft:time_since_rest": 243722,
+      "minecraft:damage_dealt": 450,
+      "minecraft:play_one_minute": 243722,
+      "minecraft:sprint_one_cm": 1689,
+      "minecraft:leave_game": 21,
+      "minecraft:walk_one_cm": 7200,
+      "minecraft:time_since_death": 243722,
+      "minecraft:sneak_time": 95,
+      "minecraft:fly_one_cm": 10043,
+      "minecraft:drop": 11,
+      "minecraft:player_kills": 2
+    },
+    "minecraft:used": {
+      "minecraft:diamond_sword": 7
+    },
+    "minecraft:dropped": {
+      "minecraft:oak_sign": 2,
+      "minecraft:player_head": 76
+    }
+  },
+  "DataVersion": 2230
+}

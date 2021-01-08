@@ -1,0 +1,19 @@
+{
+  "stats": {
+    "minecraft:killed_by": {
+      "minecraft:player": 2
+    },
+    "minecraft:custom": {
+      "minecraft:jump": 7,
+      "minecraft:time_since_rest": 1051,
+      "minecraft:play_one_minute": 2592,
+      "minecraft:leave_game": 1,
+      "minecraft:deaths": 2,
+      "minecraft:damage_taken": 525,
+      "minecraft:time_since_death": 0,
+      "minecraft:walk_one_cm": 1027,
+      "minecraft:fly_one_cm": 284
+    }
+  },
+  "DataVersion": 2230
+}
