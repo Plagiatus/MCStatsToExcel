@@ -110,20 +110,18 @@ async function run() {
     let interval = setInterval(() => { process.stdout.write("."); }, 500);
     intervals.push(interval);
     let options = processArgs();
-    if (!options)
-        return;
-    try {
-        let data = await loadFiles(options);
-        createData(data, options);
-    }
-    catch (error) {
-        console.log("");
-        console.log(color.red("Error: " + error.message));
-        clearIntervals();
-        return;
+    if (options) {
+        try {
+            let data = await loadFiles(options);
+            createData(data, options);
+            console.log(color.black(color.greenBg("\n\nExcel successfully exported.")));
+        }
+        catch (error) {
+            console.log("");
+            console.log(color.red("Error: " + error.message));
+        }
     }
     clearIntervals();
-    console.log(color.black(color.greenBg("\n\nExcel successfully exported.")));
     if (noArgs) {
         console.log("press any key to close...");
         await keypress();
@@ -222,7 +220,6 @@ async function loadFiles(options) {
     // Summation Files
     if (options.summation) {
         process.stdout.write("\tsummation file ");
-        console.log(options.summation);
         if (!fs.existsSync(options.summation))
             throw new Error("summation file (" + options.summation + ") does not exist.");
         if (fs.statSync(options.summation).isDirectory())

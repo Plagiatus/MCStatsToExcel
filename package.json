@@ -8,7 +8,9 @@
   },
   "scripts": {
     "test": "node src/main.js",
-    "help": "node src/main.js --help"
+    "help": "node src/main.js --help",
+    "example": "node src/main.js -c ./example/config.json",
+    "exampleArg": "node src/main.js -i ./example/input -o ./example/result.xlsx -s ./example/summationExample.json"
   },
   "repository": {
     "type": "git",

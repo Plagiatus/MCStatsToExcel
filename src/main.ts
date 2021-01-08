@@ -7,55 +7,6 @@ import * as fetch from "node-fetch";
 
 const color = ConsoleColors;
 
-// let workbook = new excel.Workbook();
-// let sheet = workbook.addWorksheet("My Sheet");
-
-// sheet.getRow(4).getCell(5).value = "Test";
-
-// // add a table to a sheet
-// let ws = workbook.addWorksheet("Table test");
-// ws.addTable({
-//   name: 'MyTable',
-//   ref: 'A1',
-//   headerRow: true,
-//   totalsRow: true,
-//   style: {
-//     showRowStripes: true,
-//   },
-//   columns: [
-//     {name: 'Date', totalsRowLabel: 'Totals:', filterButton: true},
-//     {name: 'Amount', totalsRowFunction: 'sum', filterButton: false},
-//   ],
-//   rows: [
-//     [new Date('2019-07-20'), 70.10],
-//     [new Date('2019-07-21'), 70.60],
-//     [new Date('2019-07-22'), 70.10],
-//   ],
-// });
-
-// workbook.xlsx.writeFile("./test.xlsx");
-
-// prompt.start();
-// // ask user for the input
-// prompt.get([
-//   {
-//     name: "name",
-//     description: color.green("your name"),
-//     default: "Lukas"
-//   },
-//   {
-//     name: "country",
-//     description: "your country",
-//     default: "Germany"
-//   }
-// ], (err, result) => {
-//     if (err) {
-//         throw err;
-//     }
-//     // print user details
-//     console.log(`${result.name} is from ${result.country}`);
-// });
-
 interface Options {
   input?: string;
   output?: string;
@@ -159,10 +110,10 @@ argumentHandlers.sort((a, b) => a.name.localeCompare(b.name));
 run();
 async function run() {
   console.log(color.magenta("\n==================================\nMinecraft stats to Excel convertor\n=================================="),
-  color.magenta("\n  by Plagiatus (https://plagiatus.net)"),
-  color.magenta("\n  paid for by Xisuma (https://xisumavoid.com)"),
-  color.blue("\n  Code and Download: https://github.com/plagiatus/MCStatsToExcel/releases"),
-  "\n\n------"
+    color.magenta("\n  by Plagiatus (https://plagiatus.net)"),
+    color.magenta("\n  paid for by Xisuma (https://xisumavoid.com)"),
+    color.blue("\n  Code and Download: https://github.com/plagiatus/MCStatsToExcel/releases"),
+    "\n\n------"
   );
 
 
@@ -176,19 +127,17 @@ async function run() {
   intervals.push(interval);
 
   let options: Options | undefined = processArgs();
-  if (!options) return;
-  try {
-    let data = await loadFiles(options);
-    createData(data, options);
-  } catch (error) {
-    console.log("");
-    console.log(color.red("Error: " + error.message));
-    clearIntervals();
-    return;
+  if (options) {
+    try {
+      let data = await loadFiles(options);
+      createData(data, options);
+      console.log(color.black(color.greenBg("\n\nExcel successfully exported.")));
+    } catch (error) {
+      console.log("");
+      console.log(color.red("Error: " + error.message));
+    }
   }
-
   clearIntervals();
-  console.log(color.black(color.greenBg("\n\nExcel successfully exported.")));
   if (noArgs) {
     console.log("press any key to close...");
     await keypress();
@@ -237,17 +186,17 @@ function processArgs(): Options | undefined {
 
 async function loadFiles(options: Options): Promise<LoadedData> {
   console.log("Loading required resources");
-  
+
   // Config File
-  if(options.configFile){
+  if (options.configFile) {
     process.stdout.write("\tconfig file ");
-  
+
     if (!fs.existsSync(options.configFile)) throw new Error("config file (" + options.configFile + ") does not exist.");
     if (fs.statSync(options.configFile).isDirectory()) throw new Error("Defined config file is a directory.");
     if (!options.configFile.endsWith(".json")) throw new Error("Summation file is not a .json file");
     let fileContent: string = await fs.promises.readFile(options.configFile, "utf-8");
     let config: Options = JSON.parse(fileContent);
-    for(let opt in config){
+    for (let opt in config) {
       //@ts-expect-error
       options[opt] = config[opt];
     }
@@ -279,7 +228,6 @@ async function loadFiles(options: Options): Promise<LoadedData> {
   // Summation Files
   if (options.summation) {
     process.stdout.write("\tsummation file ");
-    console.log(options.summation);
     if (!fs.existsSync(options.summation)) throw new Error("summation file (" + options.summation + ") does not exist.");
     if (fs.statSync(options.summation).isDirectory()) throw new Error("Defined summation file is a directory.");
     if (!options.summation.endsWith(".json")) throw new Error("Summation file is not a .json file");
