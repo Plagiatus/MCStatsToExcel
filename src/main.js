@@ -101,7 +101,7 @@ argumentHandlers.push({
 argumentHandlers.sort((a, b) => a.name.localeCompare(b.name));
 run();
 async function run() {
-    console.log(color.magenta("\n==================================\nMinecraft stats to Excel convertor\n=================================="), color.magenta("\n  by Plagiatus (https://plagiatus.net)"), color.magenta("\n  paid for by Xisuma (https://xisumavoid.com)"), color.blue("\n  Code and Download: https://github.com/plagiatus/MCStatsToExcel/releases"), "\n\n------");
+    console.log(color.magenta("\n==================================\nMinecraft stats to Excel convertor\n=================================="), color.magenta("\n  code by Plagiatus (https://plagiatus.net)"), color.magenta("\n  idea and funding by Xisuma (https://xisumavoid.com)"), color.blue("\n  Code and Download: https://github.com/plagiatus/MCStatsToExcel/releases"), "\n\n------");
     let noArgs = false;
     if (process.argv.length == 2) {
         console.log(color.gray("No arguments provided, using default values."));

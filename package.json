@@ -10,7 +10,8 @@
     "test": "node src/main.js",
     "help": "node src/main.js --help",
     "example": "node src/main.js -c ./example/config.json",
-    "exampleArg": "node src/main.js -i ./example/input -o ./example/result.xlsx -s ./example/summationExample.json"
+    "exampleArg": "node src/main.js -i ./example/input -o ./example/result.xlsx -s ./example/summationExample.json",
+    "build": "pkg --out-path ./dist ./src/main.js"
   },
   "repository": {
     "type": "git",

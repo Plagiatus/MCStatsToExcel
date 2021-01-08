@@ -93,7 +93,7 @@ You can have multiple of everything.
 
 
 ### Further Information
-- This works in both singleplayer and multiplayer.
+This works in both singleplayer and multiplayer.
 
 ## Issues
 If you run into issues or bugs or have ideas for improvements, please [write an issue](https://github.com/plagiatus/MCStatsToExecl/issues).
@@ -107,5 +107,22 @@ If you run into issues or bugs or have ideas for improvements, please [write an 
 - add options for excel formatting
 - provide feedback on invalid summation options
 
-## Contribution
-contributions and pull requests welcome
+## Contributors
+<table>
+<tr>
+<td style="text-align:center">
+<a href="https://plagiatus.net">
+<img src="https://avatars1.githubusercontent.com/u/7681159?v=4" width="100px;" alt="Plagiatus"/>
+</a><br>
+<a href="https://plagiatus.net">Plagiatus</a><br>
+Code
+</td>
+<td style="text-align:center">
+<a href="https://xisumavoid.com">
+<img src="https://xisumavoid.com/img/logo.png" width="100px;" alt="Xisuma"/>
+</a><br>
+<a href="https://xisumavoid.com">Xisuma</a><br>
+Idea & Funding
+</td>
+</tr>
+</table>
