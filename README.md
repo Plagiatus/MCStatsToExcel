@@ -16,7 +16,7 @@ Additionally it lets you calculate custom sums out of whatever stats you want to
 
 ### Installation
 
-Head over to the [releases](./releases/latest), download it and put it somewhere. By default the program will look in the folder it is placed in for stat files, so to make it easier for yourself you can just place the executable file into the folder that the stat files are in (by default they are located in the `world/stats` folder). From there you can just doubleclick the executeable and the Excel file should appear in the same folder. If you want special summations or change other settings, read on.
+Head over to the [releases](https://github.com/plagiatus/MCStatsToExcel/releases/latest), download it and put it somewhere. By default the program will look in the folder it is placed in for stat files, so to make it easier for yourself you can just place the executable file into the folder that the stat files are in (by default they are located in the `world/stats` folder). From there you can just doubleclick the executeable and the Excel file should appear in the same folder. If you want special summations or change other settings, read on.
 
 #### Build yourself
 
@@ -24,7 +24,7 @@ _Requires node and npm to be installed._
 Alternatively to a release build you can also clone the repository to your own computer and run it through the terminal. After downloading you need to run `npm i` in the root folder of the project to install the required node modules. Then you can run the project with `node ./src/main.js` or `npm run start`. There are also two examples available, `npm run example` and `npm run exampleArg`. See the [package.json](./package.json) file for its commands.
 
 ### Usage
-If you just want to convert the files into an Excel file, you can follow the description in [installation](#installation) and just doubleclick the file to execute it. For everything else, you'll have to run the program from the commandline/shell/terminal.
+If you just want to convert the files into an Excel file, you can follow the description in [installation](#Installation) and just doubleclick the file to execute it. For everything else, you'll have to run the program from the commandline/shell/terminal.
 
 If you don't know how to do that, google will surely give you an answer.
 
@@ -96,7 +96,7 @@ You can have multiple of everything.
 - This works in both singleplayer and multiplayer.
 
 ## Issues
-If you run into issues or bugs or have ideas for improvements, please [write an issue](./issues).
+If you run into issues or bugs or have ideas for improvements, please [write an issue](https://github.com/plagiatus/MCStatsToExecl/issues).
 
 ## Ideas for future releases
 
@@ -108,4 +108,4 @@ If you run into issues or bugs or have ideas for improvements, please [write an 
 - provide feedback on invalid summation options
 
 ## Contribution
-- contributions and pull requests welcome
+contributions and pull requests welcome
