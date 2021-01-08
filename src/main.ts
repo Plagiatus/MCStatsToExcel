@@ -16,7 +16,7 @@ interface Options {
   configFile?: string;
 }
 
-let defaultOptions: Options = { input: "./", output: "./result.xlsx", parsePlayernames: true, includeTranslation: false };
+let defaultOptions: Options = { input: "./", output: "./MCStatsToExcel.xlsx", parsePlayernames: true, includeTranslation: false };
 
 interface Argument {
   name: string,

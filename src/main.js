@@ -17,7 +17,7 @@ const fs = __importStar(require("fs"));
 // @ts-expect-error
 const fetch = __importStar(require("node-fetch"));
 const color = ConsoleColors_1.default;
-let defaultOptions = { input: "./", output: "./result.xlsx", parsePlayernames: true, includeTranslation: false };
+let defaultOptions = { input: "./", output: "./MCStatsToExcel.xlsx", parsePlayernames: true, includeTranslation: false };
 let argumentHandlers = [];
 let intervals = [];
 argumentHandlers.push({
