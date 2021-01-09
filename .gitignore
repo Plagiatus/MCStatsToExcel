@@ -105,3 +105,6 @@ dist
 
 # resulting excel files
 *.xlsx
+
+# test folder
+test

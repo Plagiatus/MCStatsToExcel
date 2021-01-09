@@ -267,9 +267,12 @@ function createData(data: LoadedData, options: Options) {
 function getAllStats(data: LoadedData): Input {
   let result: Input = { playername: "", playeruuid: "", stats: {} };
   for (let i of data.inputs) {
-    result.stats = {
-      ...result.stats,
-      ...i.stats,
+    for (let category in i.stats) {
+      if (!result.stats[category])
+        result.stats[category] = {}
+      for (let stat in i.stats[category]) {
+        result.stats[category][stat] = i.stats[category][stat];
+      }
     }
   }
   return result;
