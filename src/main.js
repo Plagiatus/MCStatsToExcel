@@ -1,9 +1,25 @@
 "use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
 var __importStar = (this && this.__importStar) || function (mod) {
     if (mod && mod.__esModule) return mod;
     var result = {};
-    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
-    result["default"] = mod;
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
     return result;
 };
 var __importDefault = (this && this.__importDefault) || function (mod) {
@@ -236,15 +252,15 @@ async function loadFiles(options) {
         process.stdout.write("\tquering playernames ");
         for (let i of loadedData.inputs) {
             try {
-                let response = await fetch("https://api.mojang.com/user/profiles/" + i.playeruuid + "/names");
+                let response = await fetch("https://sessionserver.mojang.com/session/minecraft/profile/" + i.playeruuid);
                 let reply = await response.json();
                 //@ts-expect-error
                 if (reply.error || reply.length == 0)
                     throw new Error(reply.error);
-                i.playername = reply[reply.length - 1].name;
+                i.playername = reply.name;
             }
             catch (error) {
-                console.log("Playeruuid not found: ", i.playeruuid);
+                console.log("\n\t\tPlayeruuid not found: ", i.playeruuid);
                 i.playername = i.playeruuid;
             }
         }

@@ -132,7 +132,7 @@ async function run() {
       let data = await loadFiles(options);
       createData(data, options);
       console.log(color.black(color.greenBg("\n\nExcel successfully exported.")));
-    } catch (error) {
+    } catch (error: any) {
       console.log("");
       console.log(color.red("Error: " + error.message));
     }
@@ -242,13 +242,13 @@ async function loadFiles(options: Options): Promise<LoadedData> {
     process.stdout.write("\tquering playernames ");
     for (let i of loadedData.inputs) {
       try {
-        let response = await fetch("https://api.mojang.com/user/profiles/" + i.playeruuid + "/names");
-        let reply: { name: string, changedToAt?: number }[] = await response.json();
+        let response = await fetch("https://sessionserver.mojang.com/session/minecraft/profile/" + i.playeruuid);
+        let reply: { name: string } = await response.json();
         //@ts-expect-error
         if (reply.error || reply.length == 0) throw new Error(reply.error);
-        i.playername = reply[reply.length - 1].name;
+        i.playername = reply.name;
       } catch (error) {
-        console.log("Playeruuid not found: ", i.playeruuid);
+        console.log("\n\t\tPlayeruuid not found: ", i.playeruuid);
         i.playername = i.playeruuid;
       }
     }
