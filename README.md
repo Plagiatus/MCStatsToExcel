@@ -38,6 +38,7 @@ The program accepts the following arguments
 |--output|-o|-o &lt;filepath&gt;|Sets the path and name of the output file. (default: "./MCStatsToExcel.xlsx")|
 |--summation|-s|-s &lt;filepath&gt;|Sets the json file that declares additional summation. (default: none)|
 |--uuid|-u||If present, the output will use the UUID in the filename instead of quering the playernames.|
+|--swap|-w||If present, rows and columns will be swapped in the output file. _(⚠ this might cause issues with large datasets.)_
 |--config|-c|-c &lt;filepath&gt;|Loads the options from the given config file.
 
 ### Config file
@@ -49,6 +50,7 @@ The config file is a json file and it accepts the following options (basically t
 |output|string|The path and filename of the output Excel, relative to the executable.|.xlsx ending, needs writing permissions for the location|./MCStatsToExcel.xlsx|
 |summation|string|The path of the additional summations file, relative to the executable.|.json file|_none_|
 |parsePlayernames|bool|If true, the Excel will contain the playernames instead of the UUIDs.|needs internet access|true|
+|swapRowsAndColumns|bool|If true, rows and columns will be swapped in the output file.||false|
 
 **The config file is loaded after the commandline arguments, so they will be overwritten if they describe the same thing.**
 

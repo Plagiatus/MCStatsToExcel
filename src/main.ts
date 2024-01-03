@@ -14,9 +14,10 @@ interface Options {
   parsePlayernames?: boolean;
   includeTranslation?: boolean;
   configFile?: string;
+  swapRowsAndColumns?: boolean;
 }
 
-let defaultOptions: Options = { input: "./", output: "./MCStatsToExcel.xlsx", parsePlayernames: true, includeTranslation: false };
+let defaultOptions: Options = { input: "./", output: "./MCStatsToExcel.xlsx", parsePlayernames: true, includeTranslation: false, swapRowsAndColumns: false };
 
 interface Argument {
   name: string,
@@ -94,8 +95,13 @@ argumentHandlers.push({
   }
 });
 argumentHandlers.push({
-  name: "uuid", shortName: "u", info: "If present, the output will use the UUID in the filename instead of quering the playernames", usage: "", amountArgs: 0, apply: function (args: string[]): Options | boolean {
+  name: "uuid", shortName: "u", info: "If present, the output will use the UUID in the filename instead of quering the playernames.", usage: "", amountArgs: 0, apply: function (args: string[]): Options | boolean {
     return { parsePlayernames: false };
+  }
+});
+argumentHandlers.push({
+  name: "swap", shortName: "w", info: "If present, rows and columns will be swapped in the output file.", usage: "", amountArgs: 0, apply: function (args: string[]): Options | boolean {
+    return { swapRowsAndColumns: true };
   }
 });
 // argumentHandlers.push({
@@ -310,29 +316,29 @@ function createExcel(data: LoadedData, refInput: Input, options: Options): excel
     let firstCell: excel.Cell = sheet.getCell(1, 1);
     firstCell.value = category;
     firstCell.font = { bold: true, size: 16 };
+    sheet.getColumn(1).width = category.length * 1.5;
 
-    let rowNumber: number = 1;
-    let firstRow: excel.Row = sheet.getRow(rowNumber);
+    let row: number = 1, col: number = 1;
+    const swap = !!options.swapRowsAndColumns;
     for (let i: number = 0; i < data.inputs.length; i++) {
-      firstRow.getCell(i + 2).value = options.parsePlayernames ? data.inputs[i].playername : data.inputs[i].playeruuid;
+      sheet.getCell(!swap ? row : col + i + 1, !swap ? col + i + 1 : row).value = options.parsePlayernames ? data.inputs[i].playername : data.inputs[i].playeruuid;
     }
-
-    let columnWidth: number = category.length * 1.4;
     for (let stat in refInput.stats[category]) {
-      rowNumber++;
-      let row: excel.Row = sheet.getRow(rowNumber);
-      row.getCell(1).value = stat;
+      row++;
+      let cell = sheet.getCell(!swap ? row : col, !swap ? col : row);
+      cell.value = stat;
+      if(stat.length > (sheet.getColumn(!swap ? col : row).width ?? 0)){
+        sheet.getColumn(!swap ? col : row).width = stat.length;
+      }
       for (let i: number = 0; i < data.inputs.length; i++) {
+        let cell = sheet.getCell(!swap ? row : col + i + 1, !swap ? col + i + 1 : row);
         if (data.inputs[i].stats[category] && data.inputs[i].stats[category][stat]) {
-          row.getCell(i + 2).value = data.inputs[i].stats[category][stat];
+          cell.value = data.inputs[i].stats[category][stat];
         } else {
-          row.getCell(i + 2).value = 0;
+          cell.value = 0;
         }
       }
-
-      if (stat.length > columnWidth) columnWidth = stat.length;
     }
-    sheet.getColumn(1).width = columnWidth + 1;
   }
   console.log(color.green("done"));
   return workbook;
